@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+/* Color Theme Swatches in Hex */
+.Crevasse-1-hex {
+  color: #b4bec9;
+}
+.Crevasse-2-hex {
+  color: #159a9c;
+}
+.Crevasse-3-hex {
+  color: #002333;
+}
+.Crevasse-4-hex {
+  color: #deefe7;
+}
+.Crevasse-5-hex {
+  color: #ffffff;
+}
+
+/* Color Theme Swatches in RGBA */
+.Crevasse-1-rgba {
+  color: rgba(179, 189, 200, 1);
+}
+.Crevasse-2-rgba {
+  color: rgba(20, 154, 156, 1);
+}
+.Crevasse-3-rgba {
+  color: rgba(0, 35, 51, 1);
+}
+.Crevasse-4-rgba {
+  color: rgba(221, 239, 230, 1);
+}
+.Crevasse-5-rgba {
+  color: rgba(255, 255, 255, 1);
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  width: 100% !important;
+  font-size: 16px !important;
+}
