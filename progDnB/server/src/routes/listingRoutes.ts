@@ -1,4 +1,4 @@
-import { create, getAllUsersListings, getListing, deleteListing, getFavoriteListings, getListings } from "../controllers/listingController"
+import { create, getAllUsersListings, getListing, deleteListing, getFavoriteListings, getListings, addListingReview, deleteListingReview } from "../controllers/listingController"
 import express from "express"
 import { isAuthenticated, isOwner } from "../middlewares/authMiddleware"
 const router = express.Router()
@@ -9,5 +9,7 @@ router.get("/:id", getListing)
 router.get("/", getListings)
 router.delete("/:id", isAuthenticated, deleteListing)
 router.get("/favorites/:id", isAuthenticated, getFavoriteListings)
+router.post("/:listingId", isAuthenticated, addListingReview)
+router.delete("/review/:listingId", isAuthenticated, deleteListingReview)
 
 export default router

@@ -12,6 +12,12 @@ const ListingSchema = new mongoose.Schema({
   price: {type: Number, required: true},
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Reservation" }],
+  reviews: [{
+    _id: { type: mongoose.Types.ObjectId, default: mongoose.Types.ObjectId },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    stars: {type: Number, required: true},
+    comment: {type: String}
+  }]
 }, { timestamps: true }
 )
 
