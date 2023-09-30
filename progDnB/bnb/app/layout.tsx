@@ -15,6 +15,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import Loading from "./loading";
+import RatingModal from "./components/modals/RatingModal";
 
 export const metadata: Metadata = {
   title: "Air dnb",
@@ -62,6 +63,7 @@ export default function RootLayout({
           <Loading />
         ) : (
           <>
+            <RatingModal />
             <ToasterProvider />
             <RegisterModal />
             <RentModal />

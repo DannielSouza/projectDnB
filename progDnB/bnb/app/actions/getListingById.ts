@@ -1,5 +1,4 @@
 import axios from "axios"
-import prisma from "../libs/prismadb"
 import { SafeUser, safeListing } from "../types"
 
 interface IParams {
@@ -11,7 +10,7 @@ export default async function getListingById(params: IParams) {
   try {
     const {listingId} = params
     const response = await axios.get(`http://localhost:4000/listings/${listingId}`)
-const listing = response.data
+    const listing = response.data
     if(!listing) return null
 
     const safeListing: safeListing & {user: SafeUser} = {
