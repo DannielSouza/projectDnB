@@ -20,6 +20,7 @@ const RatingModal = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -40,6 +41,7 @@ const RatingModal = () => {
         { ...data, userId: currentUser?.id, stars: currentRating }
       );
       toast.success("Avaliação criada com sucesso");
+      reset();
       onClose();
     } catch (error: any) {
       console.error(error);
