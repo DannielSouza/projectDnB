@@ -9,6 +9,7 @@ import authRoutes from "./routes/authRoutes"
 import userRoutes from "./routes/userRoutes"
 import listingRoutes from "./routes/listingRoutes"
 import reservationRoutes from "./routes/reservationRoutes"
+import commentRoutes from "./routes/commentRoutes"
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.use("/auth", authRoutes)
 app.use("/user", userRoutes)
 app.use("/listings", listingRoutes)
 app.use("/reservations", reservationRoutes)
+app.use("/comment", commentRoutes)
 
 // STARTING SERVER AND DB
 const server = http.createServer(app)
