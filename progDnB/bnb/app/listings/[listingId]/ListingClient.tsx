@@ -1,5 +1,7 @@
 "use client";
 
+import { getListingComments } from "@/app/actions/getListingComments";
+import CommentsSection from "@/app/components/commentsSection/CommentsSection";
 import Container from "@/app/components/container/Container";
 import ListingHead from "@/app/components/listingHead/ListingHead";
 import ListingInfo from "@/app/components/listingInfo/ListingInfo";
@@ -7,7 +9,7 @@ import ListingReservation from "@/app/components/listingReservation/ListingReser
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useUserAuth from "@/app/hooks/useUserAuth";
-import { SafeUser, safeListing, safeReservation } from "@/app/types";
+import { IComment, SafeUser, safeListing, safeReservation } from "@/app/types";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -35,6 +37,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+  const [comments, setComments] = useState<IComment[]>([]);
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -93,6 +96,15 @@ const ListingClient: React.FC<ListingClientProps> = ({
     }
   }, [dateRange, listing.price]);
 
+  useEffect(() => {
+    const getComments = async () => {
+      const data = await getListingComments(listing?.id);
+      console.log(data);
+      setComments(data as IComment[]);
+    };
+    getComments();
+  }, [listing]);
+
   const category = categories.find(
     (category) => category.label === listing.category
   );
@@ -107,7 +119,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             locationValue={listing.locationValue}
             id={listing.id}
           />
-          <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
+          <div className="md:grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
             <ListingInfo
               user={listing.user}
               category={category}
@@ -117,7 +129,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               bathroomCount={listing.bathroomCount}
               locationValue={listing.locationValue}
             />
-            <div className="order-first mb-10 md:order-last md:col-span-3">
+            <div className="order-first mb-10 md:col-span-3 md:order-4 md:px-4 max-md:mt-8">
               <ListingReservation
                 price={listing.price}
                 totalPrice={totalPrice}
@@ -127,6 +139,9 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 disabled={isLoading}
                 disabledDates={disabledDates}
               />
+            </div>
+            <div className="grid mt-6 !col-span-7 md:order-last">
+              <CommentsSection data={comments} />
             </div>
           </div>
         </div>

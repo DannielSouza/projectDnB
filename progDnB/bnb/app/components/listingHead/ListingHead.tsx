@@ -8,6 +8,8 @@ import HearthButton from "../hearthButton/HearthButton";
 import StarRatings from "react-star-ratings";
 import useRatingModal from "@/app/hooks/useRatingModal";
 import { getListingRating } from "@/app/actions/getListingRating";
+import useUserAuth from "@/app/hooks/useUserAuth";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 interface ListingHeadProps {
   title: string;
@@ -26,8 +28,13 @@ const ListingHead: React.FC<ListingHeadProps> = ({
   const location = getByValue(locationValue);
   const { onOpen, onChangeRating } = useRatingModal();
   const [rating, setRating] = useState(0);
+  const { currentUser } = useUserAuth();
+  const loginModal = useLoginModal();
 
   const handleChangeRating = (newRating: number) => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
     onChangeRating(newRating);
     onOpen(id);
   };
@@ -60,7 +67,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           starEmptyColor="#D5D8DC"
         />
         <p className="font-light font-neutral-500 text-[.8rem]">
-          ({rating.toFixed(2)})
+          ({rating.toFixed(1)})
         </p>
       </div>
       <div className="w-full h-[60vh] overflow-hidden rounded-xl relative">

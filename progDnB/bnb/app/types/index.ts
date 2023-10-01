@@ -54,3 +54,13 @@ export type safeReservation = Omit<Reservation, "createdAt" | "startDate" | "end
   endDate: string
   listing: safeListing
 }
+
+export interface IComment {
+  id: string
+  comment: string
+  stars: number
+  user: SafeUser
+  listing: safeListing
+  createdAt: string
+  updatedAt: string
+}
