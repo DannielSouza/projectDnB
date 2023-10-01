@@ -27,7 +27,24 @@ export const getRating = async (req: express.Request, res: express.Response) => 
 
   } catch (error) {
     console.error(`Erro ao cadastrar review: ${error}`)
-    res.status(400).json({message: "Ops... Houve um erro ao fazer a avaliação."})
+    res.status(400).json({message: "Ops... Houve um erro ao consultar a nota."})
+  }
+}
+
+export const getComments = async (req: express.Request, res: express.Response) => {
+  try {
+    const { listingId } = req.params
+  
+    const listing = await getListingById(listingId)
+    if(!listing) return res.status(404).json({message: 'Propriedade não encontrada.'})
+  
+   
+    const allComments = await CommentModel.find({listing: listingId}).populate('user').populate('listing').sort({ createdAt: 1 });
+  
+    res.status(200).send(allComments)
+  } catch (error) {
+    console.error(`Erro ao cadastrar review: ${error}`)
+    res.status(400).json({message: "Ops... Houve um erro ao buscar as avaliações."})
   }
 }
 
