@@ -1,4 +1,3 @@
-import { imageUploader } from "@/app/helpers/imageUploader";
 import { SafeUser } from "@/app/types";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -24,8 +23,9 @@ const ImageInfo: React.FC<ImageInfoProps> = ({ currentUser }) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!profileImage) return;
+
+    //return console.log(profileImage);
     try {
-      /* await imageUploader(profileImage, "user"); */
       const form = new FormData();
       form.append("image", profileImage);
       await axios.post("http://localhost:4000/user/image", form, {
@@ -39,7 +39,7 @@ const ImageInfo: React.FC<ImageInfoProps> = ({ currentUser }) => {
   };
 
   return (
-    <div>
+    <div className="max-md:flex max-md:flex-col max-md:items-center max-md:w-full">
       <Image
         className="rounded-full !w-[300px] !h-[300px] !relative"
         fill

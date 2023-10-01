@@ -24,7 +24,7 @@ const UserPage = () => {
 
   return (
     <Container>
-      <div className="w-fit flex flex-col m-auto">
+      <div className="flex flex-col m-auto w-full">
         <Heading
           title="Informações de usuário e segurança."
           subtitle="Aqui você pode visualizar, alterar as informações do seu usuário e sua senha."
@@ -32,11 +32,10 @@ const UserPage = () => {
         />
         <hr />
       </div>
-
-      <div className="mt-12 flex gap-[5rem] justify-center">
+      <div className="mt-12 flex gap-[5rem] justify-center flex-col md:flex-row">
         <ImageInfo currentUser={currentUser} />
 
-        <div className="w-[550px]">
+        <div className="lg:w-[550px]">
           <ChangeInfo />
           <ChangePassword />
         </div>
