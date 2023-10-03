@@ -1,15 +1,15 @@
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
-import { storage } from "../firebase"
+import { getStorage } from "firebase-admin/storage"
 
-export const imageUploader = async (file: File, path: "user" | "listing") =>{
-  const imagesUrl: Array<string> = []
+export async function uploadImage(buffer: Buffer, fileName: string) {
+  const fileUrl = `${fileName}.png`;
+  const file = getStorage().bucket().file(fileUrl);
 
-  await uploadBytes(
-    ref(storage, `${path}/${file.name}${crypto.randomUUID()}`),
-    file
-  ).then((snapshot) =>
-    getDownloadURL(snapshot.ref).then((url) => imagesUrl.push(url))
-  )
+  await file.save(buffer, {
+    metadata: { contentType: "image/png" },
+    public: true,
+    validation: "md5",
+  });
 
-  return imagesUrl
+  const url = `https://storage.googleapis.com/${file.metadata.bucket}/${file.name}`;
+  return url ;
 }

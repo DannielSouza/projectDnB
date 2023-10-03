@@ -9,3 +9,4 @@ progDnB/server/tsconfig.json
 progDnB/server/.env
 progDnB/bnb/.env
 progDnB/bnb/tailwind.config.js
+progDnB/server/firebaseAuth.json

@@ -1,6 +1,7 @@
 import express from "express"
 import { UserModel, getUserByEmail, getUserById, getUserBySessionToken, getUsers } from "../models/users"
 import { getSessionToken } from "../middlewares/getSessionToken"
+import { uploadImage } from "../helpers/imageUploader"
 
 export const getAllUsers = async (req: express.Request, res: express.Response) => {
   try {
@@ -58,11 +59,17 @@ export const editUserImage = async (req: express.Request, res: express.Response)
     const user = await getUserBySessionToken(token).select("+authentication.password")
     if(!user) return res.status(400).json({message: "Houve um erro ao editar a foto do usuário."})
 
-    const { image } = req.body
-    console.log(req.body)
-    if(!image) return res.status(400).json({message: "A imagem é obrigatória."})
+    const file = req.files as any
 
-    return console.log(image)
+    try {
+      const newImageUrl = await uploadImage(file[0].buffer , `user/${new Date().getUTCMilliseconds() * (Math.random() * 1000)}`)
+      user.image = newImageUrl
+      await user.save()
+      res.status(200).json({message: "Foto de perfil atualizada com sucesso."})
+    } catch (error) {
+      console.log(error)
+      return res.status(400).json({message: "Ops.. Houve um erro ao tentar atualizar a foto de perfil."})
+    }
 }
 
 export const favoriteListing = async (req: express.Request, res: express.Response) => {

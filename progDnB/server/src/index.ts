@@ -10,7 +10,14 @@ import userRoutes from "./routes/userRoutes"
 import listingRoutes from "./routes/listingRoutes"
 import reservationRoutes from "./routes/reservationRoutes"
 import commentRoutes from "./routes/commentRoutes"
+import admin from "firebase-admin"
+const serviceAccount = require("C:/Users/danfe/Documents/projectDnB/progDnB/server/firebaseAuth.json");
 
+// FIREBASE CONFIG
+admin.initializeApp({ 
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: serviceAccount.storageBucket 
+  });
 const app = express()
 
 // CONFIG
