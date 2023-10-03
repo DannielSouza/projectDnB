@@ -29,8 +29,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
 }) => {
   const router = useRouter();
   const { getByValue } = useCountries();
-  const userAuth = useUserAuth();
-
   const location = getByValue(data.locationValue);
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -74,6 +72,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
         </div>
         <div className="p-1">
           <div className="font-semibold text-lg">{data.title}</div>
+          <div className="w-[15%]">
+            <hr />
+          </div>
           <div className="font-light text-neutral-500">
             {location?.region},{location?.label}
           </div>

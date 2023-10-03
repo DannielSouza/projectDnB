@@ -12,6 +12,7 @@ import useUserAuth from "@/app/hooks/useUserAuth";
 import { IComment, SafeUser, safeListing, safeReservation } from "@/app/types";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
 import { Range } from "react-date-range";

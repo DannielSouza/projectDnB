@@ -42,7 +42,7 @@ const TripsClient: React.FC<TripsClientProps> = ({ reservations }) => {
         title="Viagens"
         subtitle="Onde você tem estado e onde vai estar"
       />
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {reservations.map((reservation) => {
           return (
             <ListingCard
