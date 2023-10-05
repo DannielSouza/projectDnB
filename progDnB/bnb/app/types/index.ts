@@ -14,7 +14,7 @@ type Listing = {
   id: string
   title: string
   description: string
-  imageSrc: string
+  images: string[]
   updatedAt: Date
   createdAt: Date
   category: string

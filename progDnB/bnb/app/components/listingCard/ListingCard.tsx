@@ -1,14 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import useCountries from "@/app/hooks/useCountry";
-import { SafeUser, safeListing, safeReservation } from "@/app/types";
+import { safeListing, safeReservation } from "@/app/types";
 import { useRouter } from "next/navigation";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { format } from "date-fns";
-import Image from "next/image";
 import HearthButton from "../hearthButton/HearthButton";
 import Button from "../button/Button";
-import useUserAuth from "@/app/hooks/useUserAuth";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { BsFillPersonFill } from "react-icons/bs";
+import { BiSolidBed } from "react-icons/bi";
+import { FaShower } from "react-icons/fa";
 
 interface ListingCardProps {
   data: safeListing;
@@ -30,6 +33,21 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const router = useRouter();
   const { getByValue } = useCountries();
   const location = getByValue(data.locationValue);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = (e: any) => {
+    e.stopPropagation();
+    if (currentImageIndex < data.images.length - 1) {
+      setCurrentImageIndex((prev) => prev + 1);
+    }
+  };
+
+  const prevImage = (e: any) => {
+    e.stopPropagation();
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex((prev) => prev - 1);
+    }
+  };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -56,16 +74,29 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer group shadow-md rounded-lg"
+      className="w-[290px] h-[260px] select-none hover:!h-[285px] transition-all cursor-pointer group shadow-md rounded-lg listing-card"
     >
       <div className="flex flex-col w-full">
-        <div className="aspect-square w-full relative overflow-hidden rounded-xl">
-          <Image
-            fill
-            alt="Catalogo"
-            src={data.imageSrc}
-            className="object-cover h-full w-full group-hover:scale-110 transition"
-          />
+        <div className="w-full h-full relative overflow-hidden rounded-xl">
+          <div className="relative">
+            <div
+              onClick={prevImage}
+              className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 left-[-2px] py-4 px-1"
+            >
+              <IoIosArrowBack color={"white"} size={24} />
+            </div>
+            <img
+              alt="Catalogo"
+              src={data.images[currentImageIndex]}
+              className="object-cover h-[180px] w-full group-hover:scale-110 transition"
+            />
+            <div
+              onClick={nextImage}
+              className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 !right-[-2px] py-4 px-1"
+            >
+              <IoIosArrowForward color={"white"} size={24} />
+            </div>
+          </div>
           <div className="absolute top-3 right-3">
             <HearthButton listingId={data.id} />
           </div>
@@ -75,6 +106,22 @@ const ListingCard: React.FC<ListingCardProps> = ({
           <div className="w-[15%]">
             <hr />
           </div>
+
+          <div className="flex items-center gap-4 mb-1 mt-[-1.5rem] group-hover:mt-1 opacity-0 group-hover:opacity-100 duration-300">
+            <div className="flex items-center gap-1">
+              <BsFillPersonFill color="#737373" />
+              <p className="text-[#737373] text-[.8rem]">{data.guestCount}</p>
+            </div>
+            <div className="flex items-center gap-1">
+              <BiSolidBed color="#737373" />
+              <p className="text-[#737373] text-[.8rem]">{data.roomCount}</p>
+            </div>
+            <div className="flex items-center gap-1">
+              <FaShower color="#737373" />
+              <p className="text-[#737373] text-[.8rem]">{data.roomCount}</p>
+            </div>
+          </div>
+
           <div className="font-light text-neutral-500">
             {location?.region},{location?.label}
           </div>
