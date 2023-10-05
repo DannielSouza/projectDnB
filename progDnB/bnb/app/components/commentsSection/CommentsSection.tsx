@@ -14,7 +14,10 @@ const CommentsSection: React.FC<CommentSectionProps> = ({ data }) => {
     <>
       <hr />
       <div className="mt-6">
-        <Heading title="Avaliações e comentários" subtitle="" />
+        <div className="flex items-center gap-1">
+          <Heading title="Avaliações e comentários" subtitle="" />
+          <span className="mt-[2px]">({data.length})</span>
+        </div>
         {data.map((comment) => {
           return (
             <div key={comment.id} className="my-4">
