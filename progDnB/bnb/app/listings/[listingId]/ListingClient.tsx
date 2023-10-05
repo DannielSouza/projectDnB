@@ -100,7 +100,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
   useEffect(() => {
     const getComments = async () => {
       const data = await getListingComments(listing?.id);
-      console.log(data);
       setComments(data as IComment[]);
     };
     getComments();
@@ -116,7 +115,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="flex flex-col gap-6">
           <ListingHead
             title={listing.title}
-            imageSrc={listing.imageSrc}
+            imageSrc={listing.images[0]}
             locationValue={listing.locationValue}
             id={listing.id}
           />

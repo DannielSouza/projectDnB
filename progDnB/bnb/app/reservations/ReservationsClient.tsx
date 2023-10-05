@@ -41,7 +41,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   return (
     <Container>
       <Heading title="Reservas" subtitle="Reservas em sua(s) propriedade(s)" />
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+      <div className="pt-24 flex flex-wrap gap-12 max-sm:justify-center">
         {reservations.map((reservation) => {
           return (
             <ListingCard
