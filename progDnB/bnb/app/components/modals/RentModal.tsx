@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import Modal from "./Modal";
 import useRentModal from "@/app/hooks/useRentModal";
 import Heading from "../heading/Heading";
@@ -47,7 +47,7 @@ const RentModal = () => {
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: "",
+      images: [],
       price: 1,
       title: "",
       description: "",
@@ -60,7 +60,7 @@ const RentModal = () => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
-  const imageSrc = watch("imageSrc");
+  const images = watch("images");
 
   // IMPORT OF MAP
   const Map = useMemo(
@@ -92,8 +92,25 @@ const RentModal = () => {
 
     setIsLoading(true);
     try {
+      const form = new FormData();
+
+      for (let i = 0; i < images.length; i++) {
+        form.append("images", images[i]);
+      }
+
+      const imagesResponse = await axios.post(
+        "http://localhost:4000/listings/image",
+        form,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       await axios.post("http://localhost:4000/listings", {
         ...data,
+        images: imagesResponse.data,
         location: currentLocation.value,
         userId: userAuth.currentUser?.id,
       });
@@ -164,7 +181,7 @@ const RentModal = () => {
 
   if (step === STEPS.INFO) {
     bodyContent = (
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 select-none">
         <Heading
           title="Compartilhe algumas informações sobre seu lugar"
           subtitle="Quais comodidades você tem?"
@@ -197,6 +214,19 @@ const RentModal = () => {
     );
   }
 
+  const handleChangeImages = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const newImages = [...images];
+
+    for (let i = 0; i < files.length; i++) {
+      newImages.push(files[i]);
+    }
+
+    setCustomValue("images", newImages);
+  };
+
   if (step === STEPS.IMAGES) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -204,10 +234,7 @@ const RentModal = () => {
           title="Adicione fotos da sua propriedade"
           subtitle="Mostre aos seus hóspedes como sua propriedade é!"
         />
-        <ImageUpload
-          value={imageSrc}
-          onChange={(value) => setCustomValue("imageSrc", value)}
-        />
+        <ImageUpload value={images} onChange={handleChangeImages} />
       </div>
     );
   }
