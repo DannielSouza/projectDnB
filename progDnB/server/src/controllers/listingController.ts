@@ -3,14 +3,14 @@ import { ListingModel, getListingById } from "../models/listing"
 import { getUserById, getUserBySessionToken } from "../models/users"
 import { ReservationModel } from "../models/reservation"
 import { getSessionToken } from "../middlewares/getSessionToken"
-import mongoose from "mongoose"
+import { uploadImage } from "../helpers/imageUploader"
 
 export const create = async (req: express.Request, res: express.Response) => {
   try {
     const {
       title,
       description,
-      imageSrc,
+      images,
       category,
       roomCount,
       bathroomCount,
@@ -22,8 +22,8 @@ export const create = async (req: express.Request, res: express.Response) => {
 
     if(!title) return res.status(422).json({message: 'O titulo é obrigatório.'})
     if(!description) return res.status(422).json({message: 'A descrição é obrigatória.'})
-    if(!imageSrc) return res.status(422).json({message: 'A imagem é obrigatória.'})
-    if(!category) return res.status(422).json({message: 'A categoria de senha é obrigatório.'})
+    if(!images) return res.status(422).json({message: 'A imagem é obrigatória.'})
+    if(!category) return res.status(422).json({message: 'A categoria é obrigatória.'})
     if(!roomCount) return res.status(422).json({message: 'A quantidade de quartos é obrigatória.'})
     if(!bathroomCount) return res.status(422).json({message: 'A quantidade de banheiros é obrigatória.'})
     if(!guestCount) return res.status(422).json({message: 'A quantidade de hóspedes é obrigatória.'})
@@ -34,7 +34,7 @@ export const create = async (req: express.Request, res: express.Response) => {
     const newListing = await ListingModel.create({
       title,
       description,
-      imageSrc,
+      images,
       category,
       roomCount,
       bathroomCount,
@@ -165,4 +165,19 @@ export const getFavoriteListings = async (req: express.Request, res: express.Res
   }
 
   res.status(200).send(favoriteListings);
+}
+
+export const saveListingsImages = async (req: express.Request, res: express.Response) => {
+  const files = req.files as any[]
+  const urlImages = []
+  try {
+    for(let file of files){
+      const newImageUrl = await uploadImage(file.buffer , `listings/${new Date().getUTCMilliseconds() * (Math.random() * 1000)}`)
+      urlImages.push(newImageUrl)
+    }
+    res.status(200).send(urlImages)
+  } catch (error) {
+    console.log(error)
+    return res.status(400).json({message: "Ops.. Houve um erro ao tentar atualizar a foto de perfil."})
+  }
 }
