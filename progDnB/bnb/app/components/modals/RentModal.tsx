@@ -291,6 +291,10 @@ const RentModal = () => {
     );
   }
 
+  const validForm =
+    (step === STEPS.CATEGORY && currentCategory === "" && true) ||
+    (step === STEPS.LOCATION && currentLocation === null && true) ||
+    (step === STEPS.IMAGES && images.length === 0 && true);
   return (
     <Modal
       isOpen={rentModal.isOpen}
@@ -301,6 +305,7 @@ const RentModal = () => {
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       title="Adicionar propriedade"
       body={bodyContent}
+      disabled={validForm || isLoading}
     />
   );
 };
