@@ -115,7 +115,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="flex flex-col gap-6">
           <ListingHead
             title={listing.title}
-            imageSrc={listing.images[0]}
+            images={listing.images}
             locationValue={listing.locationValue}
             id={listing.id}
           />
