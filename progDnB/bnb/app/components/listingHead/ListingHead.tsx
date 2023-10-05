@@ -120,7 +120,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
               <div key={Math.random() * 100}>
                 <img
                   onClick={(e: any) => e.stopPropagation()}
-                  className="object-cover w-full !max-h-[650px]"
+                  className="object-cover w-full !max-h-[650px] bg-center"
                   alt="adicione imagens"
                   src={image}
                 />
