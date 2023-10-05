@@ -12,6 +12,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiSolidBed } from "react-icons/bi";
 import { FaShower } from "react-icons/fa";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 interface ListingCardProps {
   data: safeListing;
@@ -74,28 +76,64 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="w-[290px] h-[260px] select-none hover:!h-[285px] transition-all cursor-pointer group shadow-md rounded-lg listing-card"
+      className="w-[290px] h-[260px] select-none hover:!h-[288px] transition-all cursor-pointer group shadow-md rounded-lg listing-card"
     >
       <div className="flex flex-col w-full">
         <div className="w-full h-full relative overflow-hidden rounded-xl">
           <div className="relative">
-            <div
-              onClick={prevImage}
-              className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 left-[-2px] py-4 px-1"
+            <Carousel
+              showThumbs={false}
+              showArrows
+              showIndicators={false}
+              showStatus={false}
+              renderArrowPrev={(onClickHandler, hasPrev, label) => {
+                const handlePrev = (e: any) => {
+                  e.stopPropagation();
+                  onClickHandler();
+                };
+                return (
+                  hasPrev && (
+                    <div
+                      onClick={handlePrev}
+                      className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 left-[-2px] py-4 px-1"
+                    >
+                      <IoIosArrowBack color={"white"} size={24} />
+                    </div>
+                  )
+                );
+              }}
+              renderArrowNext={(onClickHandler, hasNext, label) => {
+                const handleNext = (e: any) => {
+                  e.stopPropagation();
+                  onClickHandler();
+                };
+
+                return (
+                  hasNext && (
+                    <div
+                      onClick={handleNext}
+                      className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 !right-[-2px] py-4 px-1"
+                    >
+                      <IoIosArrowForward color={"white"} size={24} />
+                    </div>
+                  )
+                );
+              }}
             >
-              <IoIosArrowBack color={"white"} size={24} />
-            </div>
-            <img
-              alt="Catalogo"
-              src={data.images[currentImageIndex]}
-              className="object-cover h-[180px] w-full group-hover:scale-110 transition"
-            />
-            <div
-              onClick={nextImage}
-              className="h-full w-10 absolute group-hover:!opacity-100 opacity-0 top-0 flex items-center z-20 !right-[-2px] py-4 px-1"
-            >
-              <IoIosArrowForward color={"white"} size={24} />
-            </div>
+              {data.images.map((image) => {
+                return (
+                  <div key={Math.random() * 100}>
+                    <img
+                      onClick={(e: any) => e.stopPropagation()}
+                      className="h-[180px] w-full group-hover:scale-100 !min-w-[290px] transition object-cover"
+                      alt="adicione imagens"
+                      style={{ objectFit: "cover" }}
+                      src={image}
+                    />
+                  </div>
+                );
+              })}
+            </Carousel>
           </div>
           <div className="absolute top-3 right-3">
             <HearthButton listingId={data.id} />
@@ -107,7 +145,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <hr />
           </div>
 
-          <div className="flex items-center gap-4 mb-1 mt-[-1.5rem] group-hover:mt-1 opacity-0 group-hover:opacity-100 duration-300">
+          <div className="flex items-center gap-4 mb-1 mt-[-1.5rem] group-hover:mt-1 opacity-0 group-hover:opacity-100 duration-200">
             <div className="flex items-center gap-1">
               <BsFillPersonFill color="#737373" />
               <p className="text-[#737373] text-[.8rem]">{data.guestCount}</p>
