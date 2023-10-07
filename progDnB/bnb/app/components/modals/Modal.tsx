@@ -1,13 +1,6 @@
 "use client";
 
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-  useRef,
-  MouseEventHandler,
-  useMemo,
-} from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../button/Button";
 
