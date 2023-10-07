@@ -3,8 +3,6 @@ import { useImageModal } from "@/app/hooks/useImageModal";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import "./ImageModal.css";
 import { AiOutlineClose } from "react-icons/ai";
 
 const ImageModal = () => {
