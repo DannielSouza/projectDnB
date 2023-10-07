@@ -232,7 +232,7 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Adicione fotos da sua propriedade"
-          subtitle="Mostre aos seus hóspedes como sua propriedade é!"
+          subtitle="Mostre aos seus hóspedes como é sua propriedade, adicione pelo menos 3 imagens."
         />
         <ImageUpload value={images} onChange={handleChangeImages} />
       </div>
@@ -294,7 +294,7 @@ const RentModal = () => {
   const validForm =
     (step === STEPS.CATEGORY && currentCategory === "" && true) ||
     (step === STEPS.LOCATION && currentLocation === null && true) ||
-    (step === STEPS.IMAGES && images.length === 0 && true);
+    (step === STEPS.IMAGES && images.length < 3 && true);
   return (
     <Modal
       isOpen={rentModal.isOpen}
