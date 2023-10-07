@@ -13,6 +13,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useImageModal } from "@/app/hooks/useImageModal";
 
 interface ListingHeadProps {
   title: string;
@@ -33,6 +34,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
   const [rating, setRating] = useState(0);
   const { currentUser } = useUserAuth();
   const loginModal = useLoginModal();
+  const imageModal = useImageModal();
 
   const handleChangeRating = (newRating: number) => {
     if (!currentUser) {
@@ -49,8 +51,6 @@ const ListingHead: React.FC<ListingHeadProps> = ({
     };
     getRating();
   }, []);
-
-  console.log(images);
 
   return (
     <>
@@ -75,12 +75,15 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           ({rating.toFixed(1)})
         </p>
       </div>
-      <div className="w-full h-[60vh] !max-h-[650px] overflow-hidden rounded-xl relative">
+      <div className="w-full max-h-[60vh] overflow-hidden rounded-xl relative">
         <Carousel
           showThumbs={false}
           showArrows
           showIndicators={false}
           showStatus={false}
+          onClickItem={(index) => {
+            imageModal.onOpen(images, index);
+          }}
           renderArrowPrev={(onClickHandler, hasPrev) => {
             const handlePrev = (e: any) => {
               e.stopPropagation();
@@ -115,11 +118,10 @@ const ListingHead: React.FC<ListingHeadProps> = ({
             );
           }}
         >
-          {images.map((image) => {
+          {images.map((image, index) => {
             return (
-              <div key={Math.random() * 100}>
+              <div className="cursor-pointer" key={Math.random() * 100}>
                 <img
-                  onClick={(e: any) => e.stopPropagation()}
                   className="object-cover w-full !max-h-[650px] bg-center"
                   alt="adicione imagens"
                   src={image}
