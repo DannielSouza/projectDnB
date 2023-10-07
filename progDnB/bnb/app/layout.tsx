@@ -16,6 +16,7 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import Loading from "./loading";
 import RatingModal from "./components/modals/RatingModal";
+import ImageModal from "./components/modals/ImageModal/ImageModal";
 
 export const metadata: Metadata = {
   title: "Air dnb",
@@ -68,6 +69,7 @@ export default function RootLayout({
             <RentModal />
             <LoginModal />
             <SearchModal />
+            <ImageModal />
             <div className="pb-20 pt-28">{children}</div>
           </>
         )}
