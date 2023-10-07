@@ -14,6 +14,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useImageModal } from "@/app/hooks/useImageModal";
+import { MdPhotoLibrary } from "react-icons/md";
 
 interface ListingHeadProps {
   title: string;
@@ -75,62 +76,42 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           ({rating.toFixed(1)})
         </p>
       </div>
-      <div className="w-full max-h-[60vh] overflow-hidden rounded-xl relative">
-        <Carousel
-          showThumbs={false}
-          showArrows
-          showIndicators={false}
-          showStatus={false}
-          onClickItem={(index) => {
-            imageModal.onOpen(images, index);
-          }}
-          renderArrowPrev={(onClickHandler, hasPrev) => {
-            const handlePrev = (e: any) => {
-              e.stopPropagation();
-              onClickHandler();
-            };
-            return (
-              hasPrev && (
-                <div
-                  onClick={handlePrev}
-                  className="h-full z-10 max-h-[500px] hover:bg-[rgba(0_,0_,0_,_0.3)] transition-all cursor-pointer w-10 absolute top-0 flex items-center left-[-2px] px-1"
-                >
-                  <IoIosArrowBack color={"white"} size={24} />
-                </div>
-              )
-            );
-          }}
-          renderArrowNext={(onClickHandler, hasNext) => {
-            const handleNext = (e: any) => {
-              e.stopPropagation();
-              onClickHandler();
-            };
+      <div className="w-full max-h-[60vh] gap-2 overflow-hidden rounded-xl grid grid-cols-3 grid-rows-2 relative">
+        <div className="grid row-span-2 h-full col-span-2">
+          <img
+            className="object-cover h-full bg-center"
+            alt="adicione imagens"
+            src={images[0]}
+          />
+        </div>
 
-            return (
-              hasNext && (
-                <div
-                  onClick={handleNext}
-                  className="h-full z-10 w-10 absolute max-h-[500px] hover:bg-[rgba(0_,0_,0_,_0.3)] transition-all cursor-pointer top-0 flex items-center !right-[-2px] px-1"
-                >
-                  <IoIosArrowForward color={"white"} size={24} />
-                </div>
-              )
-            );
-          }}
+        <div className=" h-full">
+          <img
+            className="object-cover w-full h-full bg-center"
+            alt="adicione imagens"
+            src={images[1]}
+          />
+        </div>
+
+        <div className=" h-full">
+          <img
+            className="object-cover w-full h-full bg-center"
+            alt="adicione imagens"
+            src={images[2]}
+          />
+        </div>
+
+        <div
+          onClick={() => imageModal.onOpen(images)}
+          className="absolute cursor-pointer bottom-3 right-3 bg-white rounded-full px-3 py-1 flex gap-2 items-center"
         >
-          {images.map((image, index) => {
-            return (
-              <div className="cursor-pointer" key={Math.random() * 100}>
-                <img
-                  className="object-cover w-full !max-h-[650px] bg-center"
-                  alt="adicione imagens"
-                  src={image}
-                />
-              </div>
-            );
-          })}
-        </Carousel>
-        <div className="absolute top-5 right-5 z-10">
+          <MdPhotoLibrary color="#334155" size={15} />
+          <p className="text-[0.75rem] lg:text-[1rem] text-slate-700">
+            Mostrar mais fotos
+          </p>
+        </div>
+
+        <div className="absolute top-5 right-5">
           <HearthButton listingId={id} />
         </div>
       </div>

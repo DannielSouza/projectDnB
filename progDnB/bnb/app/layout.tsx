@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import Loading from "./loading";
 import RatingModal from "./components/modals/RatingModal";
 import ImageModal from "./components/modals/ImageModal/ImageModal";
+import { useImageModal } from "./hooks/useImageModal";
 
 export const metadata: Metadata = {
   title: "Air dnb",
@@ -33,6 +34,7 @@ export default function RootLayout({
 }) {
   const userAuth = useUserAuth();
   const { currentUser, onSuccessLoad, isLoaded } = userAuth;
+  const { isOpen } = useImageModal();
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -58,21 +60,23 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" title="Air dnb">
       <body className={font.className}>
-        <Navbar currentUser={currentUser} />
-        {!isLoaded ? (
-          <Loading />
-        ) : (
-          <>
-            <RatingModal />
-            <ToasterProvider />
-            <RegisterModal />
-            <RentModal />
-            <LoginModal />
-            <SearchModal />
-            <ImageModal />
-            <div className="pb-20 pt-28">{children}</div>
-          </>
-        )}
+        <RatingModal />
+        <ToasterProvider />
+        <RegisterModal />
+        <RentModal />
+        <LoginModal />
+        <SearchModal />
+        <ImageModal />
+        <div className={`${isOpen && "overflow-hidden max-h-[100vh]"}`}>
+          <Navbar currentUser={currentUser} />
+          {!isLoaded ? (
+            <Loading />
+          ) : (
+            <>
+              <div className={`pb-20 pt-28`}>{children}</div>
+            </>
+          )}
+        </div>
       </body>
     </html>
   );
