@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "../../hooks/useRegisterModal";
 import useLoginModal from "../../hooks/useLoginModal";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
 import Heading from "../heading/Heading";
 import Input from "../inputs/Input";
@@ -16,6 +16,9 @@ import Button from "../button/Button";
 import { useRouter } from "next/navigation";
 import useUserAuth from "@/app/hooks/useUserAuth";
 import Cookies from "js-cookie";
+import qs from "query-string";
+import dotenv from "dotenv";
+dotenv.config();
 
 const LoginModal = () => {
   const registerModal = useRegisterModal();
@@ -67,6 +70,25 @@ const LoginModal = () => {
     }
   };
 
+  const handleGithubLogin = async () => {
+    const GITHUB_URL = "https://github.com/login/oauth/authorize";
+    const clientId = process.env.GITHUB_ID as string;
+    const redirectUri = process.env.REDIRECT_URL as string;
+
+    console.log(clientId, redirectUri);
+
+    const params = {
+      response_type: "code",
+      scope: "user",
+      client_id: clientId,
+      redirect_uri: redirectUri,
+    };
+
+    const query = qs.stringify(params);
+    const authUrl = `${GITHUB_URL}?${query}`;
+    //router.push(authUrl);
+  };
+
   const switchModal = () => {
     loginModal.onClose();
     registerModal.onOpen();
@@ -103,6 +125,7 @@ const LoginModal = () => {
       <hr />
       <div className="flex flex-row gap-4">
         <Button
+          disabled
           outline
           label="Entrar com o Google"
           icon={FcGoogle}
@@ -110,9 +133,10 @@ const LoginModal = () => {
         />
         <Button
           outline
+          disabled
           label="Entrar com o Github"
           icon={AiFillGithub}
-          onClick={() => {}}
+          onClick={handleGithubLogin}
         />
       </div>
       <div className="text-neutral-500 text-center mt-4 font-light">

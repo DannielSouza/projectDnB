@@ -106,13 +106,15 @@ const RegisterModal = () => {
       <div className="flex flex-row gap-4">
         <Button
           outline
-          label="Registrar-se com o Google"
+          disabled
+          label="Registrar-se com Google"
           icon={FcGoogle}
           onClick={() => {}}
         />
         <Button
           outline
-          label="Registrar-se com o Github"
+          label="Registrar-se com Github"
+          disabled
           icon={AiFillGithub}
           onClick={() => signIn("github")}
         />
