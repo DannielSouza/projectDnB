@@ -1,6 +1,6 @@
 
 ## 🏘️ Project DnB
-Este projeto foi inspirado em um video de um desenvolvedor estrangeiro e ideias pessoais que tive ao decorrer do video. Inicialmente o projeto no video se comunicava com o banco de dados usando o Prisma no próprio front-end. Mas resolvi fazer uma mudança, criando uma API por conta própria utilizando NodeJS com Express e Typescirpt, com o MongoDB como banco de dados 
+Este projeto foi inspirado em um video de um desenvolvedor estrangeiro e ideias pessoais que tive ao decorrer do video. Inicialmente o projeto no video se comunicava com o banco de dados usando o Prisma no próprio front-end. Mas resolvi fazer uma mudança, criando uma API por conta própria utilizando NodeJS com Express e Typescirpt, com o MongoDB como banco de dados. Para mais informações sobre o front-end ou back-end, basta abrir respectivamente suas pastas.
 
 # Melhorias Realizadas
 
