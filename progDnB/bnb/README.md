@@ -67,7 +67,7 @@ Inicie o servidor
 <tr>
 <td>        
   
-**Login e Registro:** Clicando no botão de adicionar propriedade localizado na navbar ou no menu de usuário, é aberto um modal onde se dará inicio a criação. Após fornecer todas as informações necessárias e criar, o usuário é redirecionado para uma página onde contem todas suas propriedades já criadas. Vale ressaltar que caso o usuário não esteja logado e clique no botão de criar uma propriedade, o modal de criação não é aberto, e sim o de login.
+**Login e Registro:** Ao clicar no menu do usuário localizado na navbar, é aberto um menu com as opções de entrar e registrar-se, onde a depender da opção selecionada, é aberto um modal para concluir o processo. O modal de entrar também é aberto caso o usuário clique no botão de adicionar propriedade ou tentar fazer uma avaliação sem estar logado.
 <br/>
 <br/>
 <img src="https://github.com/DannielSouza/projectDnB/assets/104663666/5e2f86d7-38e0-4b8e-9fa8-363cf61f0f12" />
@@ -79,15 +79,18 @@ Inicie o servidor
 <br/>
 
 <table>
-  <tr>
-    <td width="50%">
-      <p><strong>Criação de propriedade:</strong> Clicando no botão de adicionar propriedade localizado na navbar ou no menu de usuário, é aberto um modal onde se dará início à criação. Após fornecer todas as informações necessárias e criar, o usuário é redirecionado para uma página onde contém todas suas propriedades já criadas. Vale ressaltar que caso o usuário não esteja logado e clique no botão de criar uma propriedade, o modal de criação não é aberto, e sim o de login.</p>
-    </td>
-    <td width="50%">
-      <img src="https://media.giphy.com/media/kBI5S0wCYAxwpkjfIE/giphy.gif" />
-    </td>
-  </tr>
+<tr>
+<td width="50%">
+<p><strong>Criação de propriedade:</strong> Clicando no botão de adicionar propriedade localizado na navbar ou no menu de usuário, é aberto um modal onde se dará início à criação. Após fornecer todas as informações necessárias e criar, o usuário é redirecionado para uma página onde contém todas suas propriedades já criadas.</p>
+</td>
+<td width="50%">
+<img src="https://media.giphy.com/media/kBI5S0wCYAxwpkjfIE/giphy.gif" />
+</td>
+</tr>
 </table>
+<br/>
+<br/>
+<br/>
 
 ## Libs utilizadas
 
