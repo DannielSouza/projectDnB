@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# ProjectDnB | Front-end
 
-First, run the development server:
+Este projeto teve como forte inspiraçção o site do AirBnB e outros sites de reservas, fazendo um mix de pontos positivos e interessantes que eu vi neles e trazendo como melhorias no projeto, como está descrito no Readme na raiz do projeto.
+## Rodando localmente
+
+Clone o projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/DannielSouza/projectDnB.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Entre no diretório do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd .\bnb
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Instale as dependências
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Inicie o servidor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Libs utilizadas
 
-## Deploy on Vercel
+**React, Next e Typescript** 
+<br/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Js-cookie:** manipução dos cookies com mais facilidade, usado na autenticação;
+<br/>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**React-leaflet:** exibição dos mapas; 
+<br/>
+
+**TailwindCSS:** estilização de todo o site;
+<br/>
+
+**Query-string:** manipução e criação de queries na url com mais facilidade, usado nas pesquisas;
+<br/>
+
+**React-date-range:** criação de inputs de range de datas e manipula-los com maior facilidade e eficiência;
+<br/>
+
+**React-icons:** icones otimizados e de fácil estilização;
+<br/>
+
+**React-hook-form:** formulários mais simples e sem repetir código;
+<br/>
+
+**React-hot-toast:** mensagens de feedbacks pós ação para o usuário;
+<br/>
+
+**React-responsive-carousel:** carrossel de imagens simples e responsivo, utilizado nos cads; 
+<br/>
+
+**React-spinners:** componentes de carregamentos com fácil uso e estilização;
+<br/>
+
+**React-star-rating:** componentes e funcionalidades de avaliação facilitados
+<br/>
+
+**world countries:** Nomes de paises e cidades de todo o mundo com mais facilidade;
+<br/>
+
+**Zustand:** Armazenamento de estados e funções globais com o uso de hooks
+<br/>
