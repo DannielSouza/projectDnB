@@ -94,7 +94,10 @@ Inicie o servidor
 
 ## Libs utilizadas
 
-**React, Next;** 
+**React:** biblioteca JavaScript para construir interfaces de usuário interativas;
+<br/>
+
+**Next:** framework para construir aplicativos web do lado do servidor usando React;
 <br/>
 
 **Typescript:** adiciona tipagem na aplicação, contribuindo para seu crecimento e faclilidade de desenvolvimento;
@@ -121,6 +124,9 @@ Inicie o servidor
 **React-hook-form:** formulários mais simples e sem repetir código;
 <br/>
 
+**React-select:** input de select flexivel e de maior facilidade de implementação;
+<br/>
+
 **React-hot-toast:** mensagens de feedbacks pós ação para o usuário;
 <br/>
 
@@ -133,7 +139,7 @@ Inicie o servidor
 **React-star-rating:** componentes e funcionalidades de avaliação facilitados;
 <br/>
 
-**world countries:** Nomes de paises e cidades de todo o mundo com mais facilidade;
+**World countries:** Nomes de paises e cidades de todo o mundo com mais facilidade;
 <br/>
 
 **Zustand:** Armazenamento de estados e funções globais com o uso de hooks;
