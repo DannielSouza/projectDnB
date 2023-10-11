@@ -50,7 +50,7 @@ Inicie o servidor
 <tr>
 <td>    
   
-**Pesquisa:** Quando clicamos na barra de pesquisa, localizada na navbar, é aberto um modal com todos os tipos de filtros separados por etapas, sendo elas local, datas de hospedagem e quantidade de quartos, banheiros e hóspedes. Caso não haja nenhuma propriedade que atenda os requisitos da pesquisa, é exibida uma mensagem na tela e o botão de resetar os filtros
+**Pesquisa:** Quando clicamos na barra de pesquisa, localizada na navbar, é aberto um modal com todos os tipos de filtros separados por etapas, sendo elas local, datas de hospedagem e quantidade de quartos, banheiros e hóspedes. Caso não haja nenhuma propriedade que atenda os requisitos da pesquisa, é exibida uma mensagem na tela e o botão de resetar os filtros. Também é possivel filtrar apenas pelo tipo da propriedade, clicando nos tipos de propriedades abaixo da navbar.
 <br/>
 <div align="center" style="display: flex">
  <img width="49%" src="https://github.com/DannielSouza/projectDnB/assets/104663666/f01dc006-443f-4d36-b795-1f1084124bba"/>
@@ -130,11 +130,11 @@ Inicie o servidor
 **React-spinners:** componentes de carregamentos com fácil uso e estilização;
 <br/>
 
-**React-star-rating:** componentes e funcionalidades de avaliação facilitados
+**React-star-rating:** componentes e funcionalidades de avaliação facilitados;
 <br/>
 
 **world countries:** Nomes de paises e cidades de todo o mundo com mais facilidade;
 <br/>
 
-**Zustand:** Armazenamento de estados e funções globais com o uso de hooks
+**Zustand:** Armazenamento de estados e funções globais com o uso de hooks;
 <br/>
