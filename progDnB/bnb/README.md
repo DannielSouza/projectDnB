@@ -94,7 +94,10 @@ Inicie o servidor
 
 ## Libs utilizadas
 
-**React, Next e Typescript** 
+**React, Next;** 
+<br/>
+
+**Typescript:** adiciona tipagem na aplicação, contribuindo para seu crecimento e faclilidade de desenvolvimento;
 <br/>
 
 **Js-cookie:** manipução dos cookies com mais facilidade, usado na autenticação;
