@@ -28,6 +28,67 @@ Inicie o servidor
   npm run dev
 ```
 
+## Overview
+
+<table>
+<tr>
+<td>
+  
+**Home:** Ao entrar no site, é exibida uma tela com todas as propriedades atuais, onde ao passar o mouse sobre elas, o card é expandido e exibindo informações adicionais que são o número de quartos, banheiros e hóspedes suportados, além também de ser possivel visualizar outras as outras imagens da propriedade.
+<br/>
+<br/>
+<img src="https://github.com/DannielSouza/projectDnB/assets/104663666/f34273b5-edc3-4443-ab1e-35b76bb0639d" />
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+
+<table>
+<tr>
+<td>    
+  
+**Pesquisa:** Quando clicamos na barra de pesquisa, localizada na navbar, é aberto um modal com todos os tipos de filtros separados por etapas, sendo elas local, datas de hospedagem e quantidade de quartos, banheiros e hóspedes. Caso não haja nenhuma propriedade que atenda os requisitos da pesquisa, é exibida uma mensagem na tela e o botão de resetar os filtros
+<br/>
+<div align="center" style="display: flex">
+ <img width="49%" src="https://github.com/DannielSouza/projectDnB/assets/104663666/f01dc006-443f-4d36-b795-1f1084124bba"/>
+ <img width="49%" src="https://github.com/DannielSouza/projectDnB/assets/104663666/87f1f8f4-dc83-41a1-a5c8-0a5a59cbc37d"/>
+</div>
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+<table>
+<tr>
+<td>        
+  
+**Login e Registro:** Clicando no botão de adicionar propriedade localizado na navbar ou no menu de usuário, é aberto um modal onde se dará inicio a criação. Após fornecer todas as informações necessárias e criar, o usuário é redirecionado para uma página onde contem todas suas propriedades já criadas. Vale ressaltar que caso o usuário não esteja logado e clique no botão de criar uma propriedade, o modal de criação não é aberto, e sim o de login.
+<br/>
+<br/>
+<img src="https://github.com/DannielSouza/projectDnB/assets/104663666/5e2f86d7-38e0-4b8e-9fa8-363cf61f0f12" />
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+<table>
+  <tr>
+    <td width="50%">
+      <p><strong>Criação de propriedade:</strong> Clicando no botão de adicionar propriedade localizado na navbar ou no menu de usuário, é aberto um modal onde se dará início à criação. Após fornecer todas as informações necessárias e criar, o usuário é redirecionado para uma página onde contém todas suas propriedades já criadas. Vale ressaltar que caso o usuário não esteja logado e clique no botão de criar uma propriedade, o modal de criação não é aberto, e sim o de login.</p>
+    </td>
+    <td width="50%">
+      <img src="https://media.giphy.com/media/kBI5S0wCYAxwpkjfIE/giphy.gif" />
+    </td>
+  </tr>
+</table>
+
 ## Libs utilizadas
 
 **React, Next e Typescript** 
