@@ -92,6 +92,68 @@ Inicie o servidor
 <br/>
 <br/>
 
+<table>
+<tr>
+<td>
+<p><strong>Página da propriedade:</strong> Nela você encontra as três primeiras imagens da propriedade, nota e comentários, descrição, mapa, calendário de dias disponíveis e a opção de fazer uma reserva. </p>
+<p><strong>Clique nas imagens para ver com mais detalhes.</strong></p>
+</td>
+<td>
+<img src="https://github.com/DannielSouza/projectDnB/assets/104663666/3f382790-f209-418c-b05f-fce7741f90f3" />
+</td>
+<tr>
+<tr>
+<td>
+Clicando em "Mostrar mais fotos" é aberta uma tela onde contém todas as imagens.
+</td>
+<td>
+<img src="https://github.com/DannielSouza/projectDnB/assets/104663666/ee49eb30-7ec5-4065-8344-8102e9543c32" />
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+
+<table>
+<tr>
+<td>    
+<strong>Avaliação de propriedade:</strong> Clicando nas estrelas que simbolizam a nota do estabelecimento, é aberto um modal onde é possivel adicionar um comentário e escolher a nota para determinado estabelecimento.
+<br/>
+<div align="center" style="display: flex">
+ <img width="49%" src="https://github.com/DannielSouza/projectDnB/assets/104663666/6def23fb-db19-4fb7-a12b-8c80b8ffac0a"/>
+ <img width="49%" src="https://github.com/DannielSouza/projectDnB/assets/104663666/54789b8e-b8a1-4fc0-b7d4-dcf20aea21e3"/>
+</div>
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+<table>
+<tr>
+<td width="50%">
+<p><strong>Menu de usuário:</strong> Clicando no menu de usuário, é aberto um menu com diversas páginas possiveis para serem acessadas.</p>
+<p>Minha conta: Tela de opções da conta do usuário, onde nela é possivel altear sua foto, email, gênero, data de nascimento e senha da conta.</p>
+<p>Minhas viagens: Tela onde é exibido todas as reservas feitas por você em propriedade de terceiros.</p>
+<p>Minhas reservas: Tela onde é exibido todas as reservas feitas outros usuários em suas propriedades.</p>
+<p>Minhas casas: Tela onde é exibido todas propriedades cadastradas por você.</p>
+<p>Favoritos: Tela onde é exibido todas as propriedades que você marcou como favorito.</p>
+<p>Adicionar propriedade: Abre o modal de criação de propriedade.</p>
+<p>Sair: Desloga da sua conta.</p>
+</td>
+<td width="50%">
+<img src="https://github.com/DannielSouza/projectDnB/assets/104663666/59f28247-1c1c-4f2a-9a9d-f03c054d4fdf" />
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+
 ## Libs utilizadas
 
 **React:** biblioteca JavaScript para construir interfaces de usuário interativas;
