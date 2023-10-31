@@ -85,6 +85,76 @@ Inicie o servidor
 <br>
 
 
+## Rotas de usuário
+
+#### Busca todos os usuários
+- Retorna um array de usuários
+
+```http
+  GET /user
+```
+
+<br>
+
+#### Remove o usuário pelo ID
+- Retorna um usuário
+
+```http
+  DELETE /user/${id}
+```
+
+<br>
+
+#### Edita um usuário
+- Retorna o usuário editado
+
+```http
+  POST /user
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `name` | `string` | **Obrigatório**. Nome do usuário. |
+| `email` | `string` | **Obrigatório**. E-mail do usuário. |
+| `gender` | `string` | **Obrigatório**. Gênero do usuário. |
+| `birthdate` | `string` | **Obrigatório**. Data de nascimento do usuário. |
+
+
+<br>
+
+#### Altera a imagem do usuário
+- Retorna o usuário editado
+
+```http
+  POST /user/image
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `image` | `array` | **Obrigatório**. Array contendo a nova imagem. |
+
+
+
+<br>
+
+#### Favorita uma propriedade
+- Retorna o usuário com o novo favorito
+
+```http
+  POST /user/favorite/${id}
+```
+
+<br>
+
+#### Remove o favorito de uma propriedade
+- Retorna o usuário com o favorito removido
+
+```http
+  DELETE /user/favorite/${id}
+```
+
+<br>
+
 ## Rotas de propriedades
 
 #### Criação de propriedade
