@@ -97,7 +97,7 @@ Inicie o servidor
 <br>
 
 #### Remove o usuário pelo ID
-- Retorna uma mensagem de sucesso.
+- Retorna uma mensagem de sucesso
 
 ```http
   DELETE /user/${id}
@@ -147,7 +147,7 @@ Inicie o servidor
 <br>
 
 #### Remove o favorito de uma propriedade
-- Retorna uma mensagem de sucesso.
+- Retorna uma mensagem de sucesso
 
 ```http
   DELETE /user/favorite/${id}
@@ -217,7 +217,7 @@ Inicie o servidor
 <br>
 
 #### Exclui uma propriedade pelo ID
-- Retorna uma mensagem de sucesso.
+- Retorna uma mensagem de sucesso
 
 ```http
   DELETE /listings/${id}
@@ -293,6 +293,46 @@ Inicie o servidor
 <br>
 
 
+## Rotas de reservas
+
+
+#### Cria uma reserva
+- Retorna a reserva criada
+
+```http
+  POST /reservations
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `userId` | `string` | **Obrigatório**. ID do usuário que está fazendo a reserva. |
+| `userId` | `string` | **Obrigatório**. ID do usuário dono da propriedade da reserva. |
+| `listingId` | `string` | **Obrigatório**. ID da propriedade que está sendo feita a reserva. |
+| `startDate` | `string` | **Obrigatório**. Data de inicio da reserva. |
+| `endDate` | `string` | **Obrigatório**. Data de fim da reserva. |
+| `totalPrice` | `number` | **Obrigatório**. Valor total da reserva. |
+
+<br>
+
+#### Busca todas as reservas
+- Retorna um array com todas as reservas com base na query
+
+```http
+  GET /reservations?listingId=${listingID}
+  GET /reservations?userId=${userID}
+  GET /reservations?authorId=${authorID}
+```
+
+<br>
+
+#### Exclui uma reserva com base no ID
+- Retorna uma mensagem de sucesso.
+
+```http
+  DELETE /reservations/${id}
+```
+
+<br>
 
 ## Libs utilizadas
 
