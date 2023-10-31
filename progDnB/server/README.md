@@ -97,7 +97,7 @@ Inicie o servidor
 <br>
 
 #### Remove o usuário pelo ID
-- Retorna um usuário
+- Retorna uma mensagem de sucesso.
 
 ```http
   DELETE /user/${id}
@@ -147,7 +147,7 @@ Inicie o servidor
 <br>
 
 #### Remove o favorito de uma propriedade
-- Retorna o usuário com o favorito removido
+- Retorna uma mensagem de sucesso.
 
 ```http
   DELETE /user/favorite/${id}
@@ -217,7 +217,7 @@ Inicie o servidor
 <br>
 
 #### Exclui uma propriedade pelo ID
-- Retorna uma propriedade
+- Retorna uma mensagem de sucesso.
 
 ```http
   DELETE /listings/${id}
@@ -245,6 +245,51 @@ Inicie o servidor
 | :---------- | :--------- | :---------------------------------- |
 | `images` | `array` | **Obrigatório**. Array de imagens para serem cadastradas. |
 
+<br>
+
+## Rotas de avaliações
+
+#### Busca nota da propriedade
+- Retorna a nota da propriedade
+
+```http
+  GET /comment
+```
+
+<br>
+
+#### Busca os comentários da propriedade
+- Retorna aos comentários da propriedade
+
+```http
+  GET /comment/listing-comments/${id}
+```
+
+<br>
+
+
+#### Cria uma avaliação para a propriedade
+- Retorna a avaliação criada
+
+```http
+  POST /comment/${listingID}
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `userId` | `string` | **Obrigatório**. ID do usuário que está avaliando. |
+| `stars` | `number` | **Obrigatório**. Nota em estrelas. |
+| `comment` | `string` | **Opcional**. comentário da avaliação. |
+
+
+<br>
+
+#### Exclui um comentário da propriedade
+- Retorna uma mensagem de sucesso.
+
+```http
+  DELETE /comment/${listingID}?reviewId=${reviewID}
+```
 <br>
 
 
