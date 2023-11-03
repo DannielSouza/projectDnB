@@ -1,7 +1,6 @@
 "use client";
 
 import "./globals.css";
-import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Navbar from "./components/navbar/Navbar";
 import ToasterProvider from "./providers/ToasterProvider";
@@ -16,12 +15,8 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import Loading from "./loading";
 import RatingModal from "./components/modals/RatingModal";
-import ImageModal from "./components/modals/ImageModal/ImageModal";
+import ImageModal from "./components/modals/ImageModal";
 import { useImageModal } from "./hooks/useImageModal";
-
-export const metadata: Metadata = {
-  title: "Air dnb",
-};
 
 const font = Nunito({
   subsets: ["latin"],

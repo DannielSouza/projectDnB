@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import getListings, { IListingsParams } from "./actions/getListings";
 import Container from "./components/container/Container";
 import EmptyState from "./components/emptyState/EmptyState";
@@ -15,6 +16,24 @@ interface IParams {
     endDate: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: "DnB | Inicio",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/images/dnbIcon2.svg",
+        href: "/images/dnbIcon2.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/images/dnbIcon2.svg",
+        href: "/images/dnbIcon2.svg",
+      },
+    ],
+  },
+};
 
 export default async function Home(searchParams: IParams) {
   const listings = await getListings(searchParams.searchParams);

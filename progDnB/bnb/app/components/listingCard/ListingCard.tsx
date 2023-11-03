@@ -76,7 +76,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="w-[290px] h-[260px] select-none hover:!h-[288px] transition-all cursor-pointer group shadow-md rounded-lg listing-card"
+      className={`w-[290px] h-[260px] select-none hover:!h-[288px] transition-all cursor-pointer group shadow-md rounded-lg listing-card
+      ${reservation && "!h-[275px]"}
+      ${reservation && "hover:!h-[302px]"}
+      `}
     >
       <div className="flex flex-col w-full">
         <div className="w-full h-full relative overflow-hidden rounded-xl">
