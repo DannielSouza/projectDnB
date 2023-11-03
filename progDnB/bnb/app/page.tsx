@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import getListings from "./actions/getListings";
 import Container from "./components/container/Container";
 import EmptyState from "./components/emptyState/EmptyState";
 import ListingCard from "./components/listingCard/ListingCard";
+import Loader from "./components/loader/Loader";
 
 interface IParams {
   searchParams: {
@@ -26,9 +28,11 @@ export default async function Home(searchParams: IParams) {
   return (
     <Container>
       <div className="pt-24 flex flex-wrap gap-8 max-sm:justify-center">
-        {listings.map((listing: any) => {
-          return <ListingCard data={listing} key={listing.id} />;
-        })}
+        <Suspense fallback={<Loader />}>
+          {listings.map((listing: any) => {
+            return <ListingCard data={listing} key={listing.id} />;
+          })}
+        </Suspense>
       </div>
     </Container>
   );

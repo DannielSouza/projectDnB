@@ -35,21 +35,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const router = useRouter();
   const { getByValue } = useCountries();
   const location = getByValue(data.locationValue);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const nextImage = (e: any) => {
-    e.stopPropagation();
-    if (currentImageIndex < data.images.length - 1) {
-      setCurrentImageIndex((prev) => prev + 1);
-    }
-  };
-
-  const prevImage = (e: any) => {
-    e.stopPropagation();
-    if (currentImageIndex > 0) {
-      setCurrentImageIndex((prev) => prev - 1);
-    }
-  };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
