@@ -1,18 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../container/Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import { SafeUser } from "@/app/types";
 import Categories from "./Categories";
+import Cookies from "js-cookie";
+import useUserAuth from "@/app/hooks/useUserAuth";
+import axios from "axios";
 
-interface NavbarProps {
-  currentUser?: SafeUser | null;
-}
+const Navbar = () => {
+  const { onLogin, onSuccessLoad } = useUserAuth();
 
-const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+  useEffect(() => {
+    autoLogin();
+  }, []);
+
+  const autoLogin = async () => {
+    try {
+      const authToken = Cookies.get("DNB-AUTH");
+      if (typeof authToken !== "string") return;
+
+      const response = await axios.post(
+        `http://localhost:4000/auth/token/${authToken}`
+      );
+      onLogin({ ...response.data, id: response.data._id });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      onSuccessLoad();
+    }
+  };
+
+  axios.defaults.withCredentials = true;
+
   return (
     <header className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px] z-30">

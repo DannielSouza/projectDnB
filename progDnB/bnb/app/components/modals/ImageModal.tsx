@@ -1,7 +1,8 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import { useImageModal } from "@/app/hooks/useImageModal";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from "react-icons/io";
+import React, { useEffect, useRef, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { AiOutlineClose } from "react-icons/ai";
 

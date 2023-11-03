@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import Navbar from "./components/navbar/Navbar";
@@ -9,49 +7,37 @@ import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
-import useUserAuth from "./hooks/useUserAuth";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
-import Loading from "./loading";
 import RatingModal from "./components/modals/RatingModal";
 import ImageModal from "./components/modals/ImageModal";
-import { useImageModal } from "./hooks/useImageModal";
+import { Metadata } from "next";
 
 const font = Nunito({
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "DnB | Inicio",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/images/dnbIcon2.svg",
+        href: "/images/dnbIcon2.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/images/dnbIcon2.svg",
+        href: "/images/dnbIcon2.svg",
+      },
+    ],
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const userAuth = useUserAuth();
-  const { currentUser, onSuccessLoad, isLoaded } = userAuth;
-  const { isOpen } = useImageModal();
-  axios.defaults.withCredentials = true;
-
-  useEffect(() => {
-    autoLogin();
-  }, []);
-
-  const autoLogin = async () => {
-    try {
-      const authToken = Cookies.get("DNB-AUTH");
-      if (typeof authToken !== "string") return;
-
-      const response = await axios.post(
-        `http://localhost:4000/auth/token/${authToken}`
-      );
-      userAuth.onLogin({ ...response.data, id: response.data._id });
-    } catch (error) {
-      console.error(error);
-    } finally {
-      onSuccessLoad();
-    }
-  };
-
   return (
     <html lang="pt-BR" title="Air dnb">
       <body className={font.className}>
@@ -62,16 +48,12 @@ export default function RootLayout({
         <LoginModal />
         <SearchModal />
         <ImageModal />
-        <div className={`${isOpen && "overflow-hidden max-h-[100vh]"}`}>
-          <Navbar currentUser={currentUser} />
-          {!isLoaded ? (
-            <Loading />
-          ) : (
-            <>
-              <div className={`pb-20 pt-28`}>{children}</div>
-            </>
-          )}
-        </div>
+
+        <Navbar />
+
+        <>
+          <div className={`pb-20 pt-28`}>{children}</div>
+        </>
       </body>
     </html>
   );

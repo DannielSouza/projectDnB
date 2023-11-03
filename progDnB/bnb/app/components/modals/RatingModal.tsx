@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../heading/Heading";
@@ -36,10 +38,11 @@ const RatingModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        `http://localhost:4000/comment/${listingId}`,
-        { ...data, userId: currentUser?.id, stars: currentRating }
-      );
+      await axios.post(`http://localhost:4000/comment/${listingId}`, {
+        ...data,
+        userId: currentUser?.id,
+        stars: currentRating,
+      });
       toast.success("Avaliação criada com sucesso");
       reset();
       onClose();

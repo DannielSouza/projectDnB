@@ -11,8 +11,6 @@ import { getListingRating } from "@/app/actions/getListingRating";
 import useUserAuth from "@/app/hooks/useUserAuth";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useImageModal } from "@/app/hooks/useImageModal";
 import { MdPhotoLibrary } from "react-icons/md";
 
